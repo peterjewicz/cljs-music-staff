@@ -1,0 +1,22 @@
+/* some style */
+
+.staff {
+  width: 400px;
+  position: relative;
+}
+
+.staff .line {
+  width: 100%;
+  height: 1px;
+  background: black;
+  margin: 10px 0;
+}
+
+
+.note {
+  position: absolute;
+  width: 8px;
+  height: 5px;
+  border-radius: 50%;
+  border: 2px solid black;
+}
