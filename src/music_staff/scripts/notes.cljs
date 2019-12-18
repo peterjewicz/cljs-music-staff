@@ -39,6 +39,12 @@
 
 (defn draw-rest [])
 
+(defn draw-quater-rest [])
+
+(defn draw-half-rest [])
+
+(defn draw-full-rest [])
+
 
 (defn draw-note [x y type ctx]
   (cond

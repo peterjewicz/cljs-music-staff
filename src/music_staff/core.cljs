@@ -38,7 +38,8 @@
 
 
 ; (def notePositionMap {:e "38px"  :f "33px" :g "28px" :a "23px" :b "18px" :c "13px"  :d "8px"})
-(def notePositionMap {:e 80 :f 70 :g 60 :a 50 :b 40 :c 30 :d 20 :rest 0})
+;TODO need to handle things like c4 c3 ect...
+(def notePositionMap {:e 56 :f 49 :g 42 :a 35 :b 28 :c 21 :d 14 :rest 0})
 
 
 (defrecord Note [value type])
@@ -49,39 +50,10 @@
 (defn draw-staff []
   ;TODO clean these up
   (def beat-count (staff/get-total-beats notes))
-  (print beat-count)
   (def canvas (.getElementById js/document "Canvas"))
   (def ctx (.getContext canvas "2d"))
 
-  ;f
-  (.beginPath ctx)
-  (.moveTo ctx 0 0)
-  (.lineTo ctx 600 0)
-  (.stroke ctx)
-
-  ;d
-  (.beginPath ctx)
-  (.moveTo ctx 0 20)
-  (.lineTo ctx 600 20)
-  (.stroke ctx)
-
-  ;b
-  (.beginPath ctx)
-  (.moveTo ctx 0 40)
-  (.lineTo ctx 600 40)
-  (.stroke ctx)
-
-  ;g
-  (.beginPath ctx)
-  (.moveTo ctx 0 60)
-  (.lineTo ctx 600 60)
-  (.stroke ctx)
-
-  ;e
-  (.beginPath ctx)
-  (.moveTo ctx 0 80)
-  (.lineTo ctx 600 80)
-  (.stroke ctx)
+  (staff/draw-staff ctx)
 
   (loop [noteCount 0]
     (if (>= noteCount (count notes))
