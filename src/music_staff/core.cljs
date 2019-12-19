@@ -39,12 +39,13 @@
 
 ; (def notePositionMap {:e "38px"  :f "33px" :g "28px" :a "23px" :b "18px" :c "13px"  :d "8px"})
 ;TODO need to handle things like c4 c3 ect...
-(def notePositionMap {:e 56 :f 49 :g 42 :a 35 :b 28 :c 21 :d 14 :rest 0})
+(def notePositionMap {:e 56 :f 49 :g 42 :a 35 :b 28 :c 21 :d 14 :rest-whole 28 :rest-half 28})
 
 
 (defrecord Note [value type])
 
-(def notes [(Note. :e "quarter") (Note. :f "half") (Note. :g "whole")])
+(def notes [(Note. :e "quarter") (Note. :f "half") (Note. :g "whole") (Note. :rest-whole "whole-rest")
+            (Note. :rest-half "half-rest")])
 
 
 (defn draw-staff []
@@ -52,7 +53,6 @@
   (def beat-count (staff/get-total-beats notes))
   (def canvas (.getElementById js/document "Canvas"))
   (def ctx (.getContext canvas "2d"))
-
   (staff/draw-staff ctx)
 
   (loop [noteCount 0]

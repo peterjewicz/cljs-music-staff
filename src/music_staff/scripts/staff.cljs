@@ -6,7 +6,9 @@
   (cond
     (= noteType "quarter") 1
     (= noteType "half")    2
-    (= noteType "whole")   4))
+    (= noteType "whole")   4
+    (= noteType "half-rest") 2
+    (= noteType "whole-rest") 4))
 
 
 (defn get-total-beats [notes]

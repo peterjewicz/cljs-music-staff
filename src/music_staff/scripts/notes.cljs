@@ -41,13 +41,18 @@
 
 (defn draw-quater-rest [])
 
-(defn draw-half-rest [])
+(defn draw-half-rest [x y ctx]
+  (.rect ctx x (- y 5) 10 5)
+  (.fill ctx))
 
-(defn draw-full-rest [])
-
+(defn draw-whole-rest [x y ctx]
+  (.rect ctx x y 10 5)
+  (.fill ctx))
 
 (defn draw-note [x y type ctx]
   (cond
     (= type "quarter") (draw-quarter-note x y ctx)
     (= type "half")    (draw-half-note x y ctx)
-    (= type "whole")   (draw-whole-note x y ctx)))
+    (= type "whole")   (draw-whole-note x y ctx)
+    (= type "half-rest") (draw-half-rest x y ctx)
+    (= type "whole-rest") (draw-whole-rest x y ctx)))
